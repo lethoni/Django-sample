@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if notfound %}
+    <div class="container" style="padding-top: 10px;">
+        <h2>Please enter the user name you want to query.</h2>
+    </div>
+{% elif not user.id %}
+    <div class="container" style="padding-top: 10px;">
+        <h2>Not Found.</h2>
+    </div>
+{% else %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card" style="width: 18rem; margin-top:10px;">
+                    <img class="card-img-top" src="{{ user.avatar_url }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.login }}</h5>
+                        <p class="card-text">blog: {{ user.blog }}</p>
+                        <p class="card-text">public_repos: {{ user.public_repos }}</p>
+                        <p class="card-text">followers: {{ user.followers }}</p>
+                        <p class="card-text">following: {{ user.following }}</p>
+                        <p class="card-text">created_at: {{ user.created_at }}</p>
+                        <p class="card-text">updated_at: {{ user.updated_at }}</p>
+                        <a href="{{ user.html_url }}" class="btn btn-primary" target="_blank">learn more ></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

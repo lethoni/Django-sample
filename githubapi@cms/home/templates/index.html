@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Github user</h1>
+        <p class="lead">This is a Django project that asks Github users.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for user in api %}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem; margin-top:10px;">
+                <img class="card-img-top" src="{{ user.avatar_url }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.login }}</h5>
+                    <p class="card-text">{{ user.login }}'s Github</p>
+                    <a href="{{ user.html_url }}" class="btn btn-primary" target="_blank">learn more ></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
